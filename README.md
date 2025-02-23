@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# zhu_haiqiao_ui_garden: A React + Storybook UI Component Library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains a **UI Component Library** built with **React (TypeScript)**, **Storybook**, and **Styled Components**. The application is containerized with **Docker** and can be accessed on **localhost:8083** in production mode.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+- **Goal**: Provide reusable UI components (Button, Label, Text, Table, etc.) with default/disabled states, responsive design, and test coverage.
+- **Key Features**:
+  - **React + TypeScript** project initialized via Create React App.
+  - **Storybook** for component exploration and property controls.
+  - **Styled Components** for CSS-in-JS styling.
+  - **Docker** for containerizing the production build.
+  - **Jest + React Testing Library** for unit tests (each component has at least two tests).
 
-### `npm start`
+## Components Included
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Button**
+- **Label**
+- **Text**
+- **Table** (sub-components: TableHeader, TableRow, TableCell, TableFooter)
+- **Dropdown**
+- **RadioButton**
+- **Img**
+- **HeroImage**
+- **Card**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Each component folder contains:
+1. `ComponentName.tsx` – The main component
+2. `ComponentName.stories.tsx` – Storybook stories
+3. `ComponentName.types.tsx` – TypeScript interface(s)
+4. `ComponentName.test.tsx` (or `.test.tsx`) – Unit tests
+5. `index.ts` – Aggregated export
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. Installation
 
-### `npm run build`
+1. **Clone this repository**:
+   ```bash
+   git clone <your-repo-url>
+   cd zhu_haiqiao_ui_garden
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Clone this repository**:
+   ```bash
+   npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. Local Development
+1. **Start Development Server (CRA)**
+   ```bash
+   npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Run Storybook**
+   ```bash
+   npm run storybook
 
-### `npm run eject`
+### 3. Testing
+We use Jest and React Testing Library. Each component has at least two tests:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Visibility: Ensures the component is rendered and visible.
+Disabled Style: Checks background color change or pointer style when disabled is set.
+To run the tests:
+   ```bash
+   npm test
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 4. Testing
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
