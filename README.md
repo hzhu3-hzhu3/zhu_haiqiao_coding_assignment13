@@ -35,34 +35,53 @@ Each component folder contains:
 
 ### 1. Installation
 
-1. **Clone this repository**:
+**Clone this repository**:
    ```bash
    git clone <your-repo-url>
    cd zhu_haiqiao_ui_garden
-
-2. **Clone this repository**:
+```
+**Install dependencies**:
    ```bash
    npm install
+   ```
 
 ### 2. Local Development
-1. **Start Development Server (CRA)**
+**Start Development Server (CRA)**:
    ```bash
    npm start
-
-2. **Run Storybook**
+```
+**Run Storybook**:
    ```bash
    npm run storybook
-
+```
 ### 3. Testing
 We use Jest and React Testing Library. Each component has at least two tests:
 
-Visibility: Ensures the component is rendered and visible.
-Disabled Style: Checks background color change or pointer style when disabled is set.
 To run the tests:
    ```bash
    npm test
+```
+This will automatically detect .test.tsx files and execute them.
 
+### 4. Production Build
+To create a production build (output in build/ folder):
+```bash
+npm run build
+```
+### 5. Docker Deployment
+**Build Docker image:**
+```bash
+docker build -t my-library .
+```
+This uses the Dockerfile in the project root and creates a production build of the React app.
 
-### 4. Testing
+**Run Docker container:**
+```bash
+docker run -d -p 8083:80 --name zhu_haiqiao_coding_assignment12 my-library
+```
+Exposes the app on http://localhost:8083.
+The container name is zhu_haiqiao_coding_assignment12, as per assignment requirements.
+The working directory in the Dockerfile is zhu_haiqiao_ui_garden.
+Check in browser:
 
-
+Go to http://localhost:8083
