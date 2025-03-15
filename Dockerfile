@@ -1,20 +1,24 @@
-FROM node:16-alpine AS build
 
-WORKDIR /zhu_haiqiao_ui_garden
+FROM node:20-alpine
+
+WORKDIR /zhu_haiqiao_ui_garden_build_checks
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm ci
 
-COPY . .
+COPY . ./
 
 RUN npm run build
 
-FROM nginx:alpine
+FROM nginx:stable-alpine
 
-COPY --from=build /zhu_haiqiao_ui_garden/build /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
 
-EXPOSE 80
+COPY --from=0 /zhu_haiqiao_ui_garden_build_checks/build ./
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 8018
 
 CMD ["nginx", "-g", "daemon off;"]
-
