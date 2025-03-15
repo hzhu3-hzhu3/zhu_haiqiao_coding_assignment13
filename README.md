@@ -1,87 +1,118 @@
-# zhu_haiqiao_ui_garden: A React + Storybook UI Component Library
+# **UI Component Library with Code Quality Checks**
 
-This repository contains a **UI Component Library** built with **React (TypeScript)**, **Storybook**, and **Styled Components**. The application is containerized with **Docker** and can be accessed on **localhost:8083** in production mode.
+This project extends the UI component library from Assignment 12 by adding code quality checks and automated testing. Following the requirements, this project implements Husky pre-commit hooks and GitHub Actions CI/CD workflow to ensure all committed code passes Prettier, ESLint, and testing validations.
 
-## Overview
+## Project Features
 
-- **Goal**: Provide reusable UI components (Button, Label, Text, Table, etc.) with default/disabled states, responsive design, and test coverage.
-- **Key Features**:
-  - **React + TypeScript** project initialized via Create React App.
-  - **Storybook** for component exploration and property controls.
-  - **Styled Components** for CSS-in-JS styling.
-  - **Docker** for containerizing the production build.
-  - **Jest + React Testing Library** for unit tests (each component has at least two tests).
+- Husky implementation for git pre-commit hooks
+- lint-staged for managing code quality checks on staged files
+- Prettier integration for code formatting
+- ESLint configuration for code quality checks
+- Jest for automated testing
+- GitHub Actions for CI/CD workflow
+- Docker containerization
 
-## Components Included
+## Setup Instructions
 
-- **Button**
-- **Label**
-- **Text**
-- **Table** (sub-components: TableHeader, TableRow, TableCell, TableFooter)
-- **Dropdown**
-- **RadioButton**
-- **Img**
-- **HeroImage**
-- **Card**
+### Prerequisites
 
-Each component folder contains:
-1. `ComponentName.tsx` – The main component
-2. `ComponentName.stories.tsx` – Storybook stories
-3. `ComponentName.types.tsx` – TypeScript interface(s)
-4. `ComponentName.test.tsx` (or `.test.tsx`) – Unit tests
-5. `index.ts` – Aggregated export
+- Node.js (v16.x or higher)
+- npm (v7.x or higher)
+- Git
+- Docker
 
-## Getting Started
+### Development Setup
 
-### 1. Installation
+**1. Clone the repository:**
 
-**Clone this repository**:
-   ```bash
-   git clone <your-repo-url>
-   cd zhu_haiqiao_ui_garden
-```
-**Install dependencies**:
-   ```bash
-   npm install
-   ```
+    git clone https://github.com/hzhu3-hzhu3/UI_Component_Library_HaiqiaoZ.git
+    cd zhu_haiqiao_ui_garden_build_checks
 
-### 2. Local Development
-**Start Development Server (CRA)**:
-   ```bash
-   npm start
-```
-**Run Storybook**:
-   ```bash
-   npm run storybook
-```
-### 3. Testing
-We use Jest and React Testing Library. Each component has at least two tests:
+**2. Install dependencies:**
 
-To run the tests:
-   ```bash
-   npm test
-```
-This will automatically detect .test.tsx files and execute them.
+    npm install
 
-### 4. Production Build
-To create a production build (output in build/ folder):
-```bash
-npm run build
-```
-### 5. Docker Deployment
-**Build Docker image:**
-```bash
-docker build -t my-library .
-```
-This uses the Dockerfile in the project root and creates a production build of the React app.
+**3. Run development server:**
 
-**Run Docker container:**
-```bash
-docker run -d -p 8083:80 --name zhu_haiqiao_coding_assignment12 my-library
-```
-Exposes the app on http://localhost:8083.
-The container name is zhu_haiqiao_coding_assignment12, as per assignment requirements.
-The working directory in the Dockerfile is zhu_haiqiao_ui_garden.
-Check in browser:
+    npm start
 
-Go to http://localhost:8083
+_The application will run at http://localhost:3000_
+
+**4. Run Storybook:**
+
+    npm run storybook
+
+_Storybook will run at http://localhost:6006_
+
+## Code Quality Tools Testing
+
+This project uses the following code quality tools:
+
+### 1. Prettier Testing
+
+You can manually run Prettier to check all files:
+
+    npm run prettier
+
+Or automatically fix formatting issues:
+
+    npm run prettier:fix
+
+**Testing Prettier Hook:** 1. Modify any file (e.g., src/App.tsx) adding some code that doesn't follow Prettier format (like extra spaces or indentation) 2. Stage the changes: `git add src/App.tsx` 3. Try to commit: `git commit -m "Testing Prettier hook"` 4. Observe Prettier automatically fixing the formatting and continuing with the commit process
+
+### 2. ESLint Testing
+
+Manually run ESLint checks:
+
+    npm run lint Fix
+
+ESLint issues:
+
+    npm run lint:fix
+
+**Testing ESLint Hook:**
+
+- Create a test file with issues that ESLint should detect: `echo  "const unused = 'this is unused'; console.log('test');"  > src/test-eslint.js`
+- Stage the file: `git add src/test-eslint.js`
+- Try to commit: `git commit -m "Test ESLint hook"`
+- If configured correctly, the hook should prevent the commit and display the unused variable error
+
+### 3. Testing Hook
+
+Manually run tests:
+`npm  test`
+
+**Testing Test Hook:**
+
+1.  Modify any test file to make it fail (like an assertion in src/App.test.tsx)
+2.  Stage the changes: `git add src/App.test.tsx`
+3.  Try to commit: `git commit -m "Testing test hook"`
+4.  If configured correctly, the hook should prevent the commit and display the test failure
+
+### 4. Bypassing Hooks (Testing Purpose Only)
+
+If you need to bypass hooks in certain situations (not recommended), you can use:
+`git commit -m "Bypass hooks" --no-verify`
+
+## CI/CD Workflow Testing
+
+The project is configured with GitHub Actions to automatically run code quality checks on every push and pull request.
+
+**Testing GitHub Actions CI/CD:**
+
+1.  Ensure you have write access to the repository
+2.  Push a problematic commit (using --no-verify to bypass local hooks)
+3.  Visit the Actions tab in your GitHub repository
+4.  Observe the workflow running and failing, providing the reasons for failure
+
+## Docker Setup and Testing
+
+As per assignment requirements, this project is configured with Docker and runs on port 8018.
+
+**Building and Running Docker Container:**
+
+1.  Build the Docker image:
+    `docker build -t zhu_haiqiao_coding_assignment13 .`
+2.  Run the Docker container:
+    `docker run -p 8018:8018 --name zhu_haiqiao_coding_assignment13 zhu_haiqiao_coding_assignment13`
+3.  Access the application: [http://localhost:8018](http://localhost:8018)
