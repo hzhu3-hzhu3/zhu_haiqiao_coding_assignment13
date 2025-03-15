@@ -25,7 +25,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -35,7 +36,7 @@
     ],
     "*.{json,css,md}": [
       "prettier --write"
-  ]
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -75,7 +76,7 @@
     "@types/styled-components": "^5.1.34",
     "eslint": "^8.57.1",
     "eslint-plugin-storybook": "^0.11.3",
-    "husky": "^9.1.7",
+    "husky": "^8.0.0",
     "lint-staged": "^15.5.0",
     "prettier": "^3.5.3",
     "prop-types": "^15.8.1",
