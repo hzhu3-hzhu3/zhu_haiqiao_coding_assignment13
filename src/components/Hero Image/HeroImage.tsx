@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { HeroImageProps } from './HeroImage.types';
 
-const StyledHero = styled.div<HeroImageProps>`
+const StyledHero = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'backgroundUrl',
+})<HeroImageProps>`
   background-image: ${({ backgroundUrl }) => `url(${backgroundUrl})`};
   background-size: cover;
   background-position: center;
