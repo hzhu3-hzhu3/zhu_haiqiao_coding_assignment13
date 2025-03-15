@@ -24,7 +24,8 @@
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings=0",
+    "format:check": "prettier --check .",
     "format": "prettier --write .",
     "prepare": "husky install"
   },
